@@ -20,9 +20,64 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.LXUI-DataGrid-Cell button{
+
+.LXUI-DataGrid-Cell>button {
     border-radius: 0;
     border: none;
+}
+
+.LXUI-DataGrid-Cell-Wrapper {
+    width: 100%;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LXUI-DataGrid-HeaderSelect {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.LXUI-DataGrid-Column-Property {
+    text-align: left;
+}
+
+.LXUI-DataGrid-Column-Property-Accordion {
+    box-shadow: none;
+}
+
+
+.LXUI-DataGrid-Selector {
+    max-width: 200px;
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.LXUI-DataGrid-Selector>div {
+    margin: 2px;
+}
+.LXUI-DataGrid-Selector input {
+    font-size: 13px;
+}
+
+.LXUI-DataGrid-Cell-Wrapper input {
+    text-align: center;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 .LXUI-DataGrid-Row:not(:last-child) {
