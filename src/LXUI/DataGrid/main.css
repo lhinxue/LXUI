@@ -3,25 +3,30 @@
 }
 
 .LXUI-DataGrid {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
+    /* width: 500px; */
+    border: 1px solid red;
+    width: fit-content;
+    /* display: flex;
+    flex-direction: column; */
+    /* overflow: scroll; */
 }
 
 .LXUI-DataGrid-Row {
     display: flex;
+    /* width: auto; */
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-evenly; */
 }
 
 .LXUI-DataGrid-Cell {
-    flex: 1;
+    /* flex: 1; */
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.LXUI-DataGrid-Cell>button {
+.LXUI-DataGrid-Cell > button {
     border-radius: 0;
     border: none;
 }
@@ -57,9 +62,10 @@
     flex-wrap: wrap;
 }
 
-.LXUI-DataGrid-Selector>div {
+.LXUI-DataGrid-Selector > div {
     margin: 2px;
 }
+
 .LXUI-DataGrid-Selector input {
     font-size: 13px;
 }
