@@ -1,5 +1,5 @@
 import {Box} from '@mui/material'
-import {Component} from 'react'
+import {Component, createRef} from 'react'
 import './main.css'
 import DEFAULT from "./src/DEFAULT";
 import {DataRow, FooterRow, HeaderRow} from "./src/Row";
@@ -10,8 +10,10 @@ export default class DataGrid extends Component {
         super(props, context);
         this.state = {
             matrix: this.props.matrix ?? DEFAULT.MATRIX,
+            staticFooter: false,
             _: false
         }
+        this.ref = createRef()
         this.matrix = this.matrix.bind(this)
         this._matrix = this._matrix.bind(this)
         this.forceReRender = this.forceReRender.bind(this)
@@ -27,6 +29,7 @@ export default class DataGrid extends Component {
             insertColumn: this.insertColumn,
             addRow: this.addRow,
         }
+        this.handleSizeChange = this.handleSizeChange.bind(this)
     }
 
     matrix() {
@@ -120,7 +123,26 @@ export default class DataGrid extends Component {
         this._matrix((x) => {
             x.data.push(Array(x.header.length).fill(''))
             return x
-        }, this.forceReRender)
+        }, () => {
+            this.handleSizeChange()
+            this.forceReRender()
+        })
+    }
+
+    handleSizeChange() {
+        const event = {
+            scrollHeight: this.ref.current.scrollHeight,
+            scrollWidth: this.ref.current.scrollWidth,
+            scrollTop: this.ref.current.scrollTop,
+            scrollLeft: this.ref.current.scrollLeft,
+            clientHeight: this.ref.current.clientHeight,
+            clientWidth: this.ref.current.clientWidth,
+        }
+        if (event.clientHeight < event.scrollHeight) {
+            this.setState({staticFooter: true})
+        } else {
+            this.setState({staticFooter: false})
+        }
     }
 
     render() {
@@ -128,6 +150,8 @@ export default class DataGrid extends Component {
             <Box
                 className={'LXUI-DataGrid'}
                 sx={this.generateStyle()}
+                ref={this.ref}
+                onScroll={this.handleSizeChange}
             >
                 <HeaderRow
                     matrix={this.state.matrix}
@@ -144,6 +168,7 @@ export default class DataGrid extends Component {
                         />
                     ))
                 }
+
                 <FooterRow utility={this.utility}/>
             </Box>
         )

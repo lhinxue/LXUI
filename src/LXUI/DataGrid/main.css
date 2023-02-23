@@ -3,20 +3,28 @@
 }
 
 .LXUI-DataGrid {
-    /* width: 500px; */
+    width: 500px;
+    height: 500px;
     border: 1px solid red;
-    width: fit-content;
+    /*width: fit-content;*/
     /* display: flex;
     flex-direction: column; */
-    /* overflow: scroll; */
+    overflow: scroll;
+    /*padding-top: 40px;*/
+    position: relative;
 }
+
 
 .LXUI-DataGrid-Row {
     display: flex;
-    /* width: auto; */
+    width: fit-content;
     /* display: flex;
     flex-direction: row;
     justify-content: space-evenly; */
+}
+
+.LXUI-DataGrid-Row:first-child {
+    /*height: 29px;*/
 }
 
 .LXUI-DataGrid-Cell {
@@ -51,6 +59,27 @@
 
 .LXUI-DataGrid-Column-Property-Accordion {
     box-shadow: none;
+}
+
+.LXUI-DataGrid-TF {
+    background: white;
+    position: sticky;
+    bottom: 0;
+    z-index: 116;
+    left: 0;
+}
+
+.LXUI-DataGrid-Row.LXUI-DataGrid-TH,
+.LXUI-DataGrid-Row.LXUI-DataGrid-TH > .LXUI-DataGrid-Cell,
+.LXUI-DataGrid-Row.LXUI-DataGrid-TH > .LXUI-DataGrid-Cell > button {
+    height: 40px;
+}
+
+.LXUI-DataGrid-Row.LXUI-DataGrid-TH {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 116;
 }
 
 

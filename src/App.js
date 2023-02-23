@@ -8,7 +8,7 @@ function App() {
     const ref = useRef()
     return (
         <div className="App">
-            <DataGrid ref={ref} disableProperty/>
+            <DataGrid ref={ref}/>
             <Button onClick={()=>console.log(ref.current.matrix())}>click</Button>
         </div>
     );
